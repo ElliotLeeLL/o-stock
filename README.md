@@ -1,2 +1,2 @@
 # o-stock
-A experimental microservice application🐸
+An experimental microservice application🐸
