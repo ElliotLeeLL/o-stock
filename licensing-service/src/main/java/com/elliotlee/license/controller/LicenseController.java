@@ -5,8 +5,6 @@ import com.elliotlee.license.service.LicenseService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
-
 /**
  * @ClassName LicenseController
  * @Description Class created by Elliot Lee

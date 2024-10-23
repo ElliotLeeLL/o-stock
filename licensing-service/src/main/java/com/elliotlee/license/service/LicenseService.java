@@ -3,7 +3,6 @@ package com.elliotlee.license.service;
 import com.elliotlee.license.model.License;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
 import java.util.Random;
 
 /**
@@ -29,7 +28,7 @@ public class LicenseService {
         String responseMessage = null;
         if(license != null) {
             license.setOrganizationId(organizationId);
-            responseMessage = "Add a new license: " + license.toString();
+            responseMessage = "Add a new license: " + license;
         }
         return responseMessage;
     }
@@ -38,7 +37,7 @@ public class LicenseService {
         String responseMessage = null;
         if(license != null) {
             license.setOrganizationId(organizationId);
-            responseMessage = "Update a license: " + license.toString();
+            responseMessage = "Update a license: " + license;
         }
         return responseMessage;
     }
