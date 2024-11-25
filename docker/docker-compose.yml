@@ -1,7 +1,7 @@
 version: "1.0"
 services:
   licensingservice:
-    image: ostock
+    image: laymanlee/licensing-service:0.0.1-snapshot
     ports:
       - "8080:8080"
     environment:
