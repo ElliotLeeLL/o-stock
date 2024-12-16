@@ -28,21 +28,21 @@ public class LicenseController {
     }
 
     @PostMapping
-    public ResponseEntity<String> createLicense(
+    public ResponseEntity<License> createLicense(
             @RequestBody License license,
             @PathVariable String organizationId
             ) {
-        String message = licenseService.createLicense(license, organizationId);
-        return ResponseEntity.ok(message);
+        License res = licenseService.createLicense(license);
+        return ResponseEntity.ok(res);
     }
 
     @PutMapping
-    public ResponseEntity<String> updateLicense(
+    public ResponseEntity<License> updateLicense(
             @RequestBody License license,
             @PathVariable String organizationId
     ) {
-        String message = licenseService.updateLicense(license, organizationId);
-        return ResponseEntity.ok(message);
+        License res = licenseService.updateLicense(license);
+        return ResponseEntity.ok(res);
     }
 
     @DeleteMapping(value = "/{licenseId}")
@@ -50,7 +50,7 @@ public class LicenseController {
             @PathVariable String licenseId,
             @PathVariable String organizationId
     ) {
-        String message = licenseService.deleteLicense(licenseId, organizationId);
+        String message = licenseService.deleteLicense(licenseId);
         return ResponseEntity.ok(message);
     }
 
