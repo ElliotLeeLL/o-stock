@@ -1,7 +1,6 @@
 package com.elliotlee.license.service;
 
 import com.elliotlee.license.model.License;
-import org.springframework.stereotype.Service;
 
 /**
  * @ClassName LicenseService

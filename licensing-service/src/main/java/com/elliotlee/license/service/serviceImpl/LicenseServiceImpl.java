@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.UUID;
 
 /**
- * @ClassName LicenseService
+ * @ClassName LicenseServiceImpl
  * @Description Class created by Elliot Lee
  * @Author Elliot Lee
  * @Date 2024-10-23 8:51 PM

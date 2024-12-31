@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 /**
- * @ClassName LicenseService
+ * @ClassName LicenseRepository
  * @Description Class created by Elliot Lee
  * @Author Elliot Lee
  * @Date 2024-12-16 7:20 PM

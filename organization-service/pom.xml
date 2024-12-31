@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.elliotlee</groupId>
-	<artifactId>licensing-service</artifactId>
+	<artifactId>organization-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>License Service</name>
-	<description>Ostock Licensing Service</description>
+	<name>Organization Service</name>
+	<description>Ostock Organization Service</description>
 
 	<properties>
 		<java.version>11</java.version>

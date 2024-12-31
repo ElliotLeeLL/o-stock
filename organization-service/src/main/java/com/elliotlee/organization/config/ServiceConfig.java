@@ -1,7 +1,6 @@
-package com.elliotlee.license.config;
+package com.elliotlee.organization.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -14,10 +13,6 @@ import org.springframework.context.annotation.Configuration;
 @ConfigurationProperties(prefix = "example")
 public class ServiceConfig {
     private String property;
-
-    public void setProperty(String property) {
-        this.property = property;
-    }
 
     public String getProperty() {
         return property;
