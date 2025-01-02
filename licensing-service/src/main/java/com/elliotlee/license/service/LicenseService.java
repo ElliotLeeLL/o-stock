@@ -1,6 +1,7 @@
 package com.elliotlee.license.service;
 
 import com.elliotlee.license.model.License;
+import com.elliotlee.license.model.Organization;
 
 /**
  * @ClassName LicenseService
@@ -14,4 +15,5 @@ public interface LicenseService {
     public License createLicense(License license);
     public License updateLicense(License license);
     public String deleteLicense(String licenseId);
+    public Organization getOrganizationById(String organizationId);
 }

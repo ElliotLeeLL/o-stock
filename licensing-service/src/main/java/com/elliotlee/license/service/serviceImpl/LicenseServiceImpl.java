@@ -1,9 +1,13 @@
 package com.elliotlee.license.service.serviceImpl;
 
+import com.elliotlee.license.client.OpenFeignOrganizationClient;
+import com.elliotlee.license.client.RestOrganizationClient;
 import com.elliotlee.license.config.ServiceConfig;
 import com.elliotlee.license.model.License;
+import com.elliotlee.license.model.Organization;
 import com.elliotlee.license.repository.LicenseRepository;
 import com.elliotlee.license.service.LicenseService;
+import com.netflix.niws.client.http.RestClient;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -18,9 +22,13 @@ import java.util.UUID;
 public class LicenseServiceImpl implements LicenseService {
     final private LicenseRepository licenseRepository;
     final private ServiceConfig serviceConfig;
-    public LicenseServiceImpl(LicenseRepository licenseRepository, ServiceConfig serviceConfig) {
+    final private RestOrganizationClient restOrganizationClient;
+    final private OpenFeignOrganizationClient openFeignOrganizationClient;
+    public LicenseServiceImpl(LicenseRepository licenseRepository, ServiceConfig serviceConfig, RestOrganizationClient restOrganizationClient, OpenFeignOrganizationClient openFeignOrganizationClient) {
         this.licenseRepository = licenseRepository;
         this.serviceConfig = serviceConfig;
+        this.restOrganizationClient = restOrganizationClient;
+        this.openFeignOrganizationClient = openFeignOrganizationClient;
     }
     public License getLicense(String licenseId, String organizationId) {
         License license = licenseRepository.findByOrganizationIdAndLicenseId(organizationId, licenseId);
@@ -46,5 +54,11 @@ public class LicenseServiceImpl implements LicenseService {
         license.setLicenseId(licenseId);
         licenseRepository.delete(license);
         return "License deleted";
+    }
+
+    public Organization getOrganizationById(String organizationId){
+        Organization restOrg = restOrganizationClient.getOrganization(organizationId);
+        Organization openOrg = openFeignOrganizationClient.getOrganization(organizationId);
+        return openFeignOrganizationClient.getOrganization(organizationId);
     }
 }

@@ -1,6 +1,7 @@
 package com.elliotlee.license.controller;
 
 import com.elliotlee.license.model.License;
+import com.elliotlee.license.model.Organization;
 import com.elliotlee.license.service.LicenseService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -52,6 +53,13 @@ public class LicenseController {
     ) {
         String message = licenseService.deleteLicense(licenseId);
         return ResponseEntity.ok(message);
+    }
+
+    @GetMapping
+    public ResponseEntity<Organization> getOrganizationById(
+            @PathVariable String organizationId
+    ) {
+        return ResponseEntity.ok(licenseService.getOrganizationById(organizationId));
     }
 
 }
