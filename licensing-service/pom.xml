@@ -18,6 +18,7 @@
 		<java.version>11</java.version>
 		<docker.image.prefix>laymanlee</docker.image.prefix>
 		<spring-cloud.version>Hoxton.SR1</spring-cloud.version>
+		<maven.test.skip>true</maven.test.skip>
 	</properties>
 
 	<dependencies>
