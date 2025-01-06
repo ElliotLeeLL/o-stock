@@ -33,6 +33,8 @@ services:
     image: laymanlee/eurekaserver:0.0.1-SNAPSHOT
     ports:
       - "8070:8070"
+    environment:
+      SPRING_PROFILES_ACTIVE: "dev"
     depends_on:
       database:
         condition: service_healthy
