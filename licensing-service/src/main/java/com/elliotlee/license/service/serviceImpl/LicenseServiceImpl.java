@@ -30,8 +30,8 @@ public class LicenseServiceImpl implements LicenseService {
         this.restOrganizationClient = restOrganizationClient;
         this.openFeignOrganizationClient = openFeignOrganizationClient;
     }
-    public License getLicense(String licenseId, String organizationId) {
-        License license = licenseRepository.findByOrganizationIdAndLicenseId(organizationId, licenseId);
+    public License getLicense(String licenseId) {
+        License license = licenseRepository.findLicenseByLicenseId(licenseId);
         if(null == license) {
             throw new IllegalArgumentException("License not found");
         }
@@ -57,8 +57,10 @@ public class LicenseServiceImpl implements LicenseService {
     }
 
     public Organization getOrganizationById(String organizationId){
-        Organization restOrg = restOrganizationClient.getOrganization(organizationId);
-        Organization openOrg = openFeignOrganizationClient.getOrganization(organizationId);
+        Organization restOrg1 = restOrganizationClient.getOrganization(organizationId);
+        System.out.println(restOrg1);
+        Organization openOrg2 = openFeignOrganizationClient.getOrganization(organizationId);
+        System.out.println(openOrg2);
         return openFeignOrganizationClient.getOrganization(organizationId);
     }
 }

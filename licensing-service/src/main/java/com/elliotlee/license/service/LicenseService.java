@@ -11,7 +11,7 @@ import com.elliotlee.license.model.Organization;
  **/
 
 public interface LicenseService {
-    public License getLicense(String licenseId, String organizationId);
+    public License getLicense(String licenseId);
     public License createLicense(License license);
     public License updateLicense(License license);
     public String deleteLicense(String licenseId);
