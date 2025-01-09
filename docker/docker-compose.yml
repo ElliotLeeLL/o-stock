@@ -9,7 +9,7 @@ services:
       POSTGRES_PASSWORD: "postgres"
       POSTGRES_DB:       "ostock_dev"
     volumes:
-      - ./:/docker-entrypoint-initdb.d
+      - ./db-init:/docker-entrypoint-initdb.d
     networks:
       backend:
         aliases:
