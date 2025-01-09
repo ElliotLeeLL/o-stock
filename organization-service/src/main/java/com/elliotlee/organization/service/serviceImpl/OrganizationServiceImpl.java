@@ -23,7 +23,7 @@ public class OrganizationServiceImpl implements OrganizationService {
     }
     @Override
     public Organization findById(String organizationId) {
-        return null;
+        return repository.findById(organizationId).orElse(null);
     }
 
     @Override
