@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
  */
 
 @RestController
-@RequestMapping(value = "v1/organization/{organizationId}/license")
+@RequestMapping(value = "v1/license")
 public class LicenseController {
     final LicenseService licenseService;
     public LicenseController(LicenseService licenseService) {
@@ -22,16 +22,14 @@ public class LicenseController {
     }
 
     @GetMapping(value = "/{licenseId}")
-    public ResponseEntity<License> getLicense(@PathVariable String licenseId,
-                                              @PathVariable String organizationId) {
+    public ResponseEntity<License> getLicense(@PathVariable String licenseId) {
         License license = licenseService.getLicense(licenseId);
         return ResponseEntity.ok(license);
     }
 
     @PostMapping
     public ResponseEntity<License> createLicense(
-            @RequestBody License license,
-            @PathVariable String organizationId
+            @RequestBody License license
             ) {
         License res = licenseService.createLicense(license);
         return ResponseEntity.ok(res);
@@ -39,8 +37,7 @@ public class LicenseController {
 
     @PutMapping
     public ResponseEntity<License> updateLicense(
-            @RequestBody License license,
-            @PathVariable String organizationId
+            @RequestBody License license
     ) {
         License res = licenseService.updateLicense(license);
         return ResponseEntity.ok(res);
@@ -48,14 +45,12 @@ public class LicenseController {
 
     @DeleteMapping(value = "/{licenseId}")
     public ResponseEntity<String> deleteLicense(
-            @PathVariable String licenseId,
-            @PathVariable String organizationId
-    ) {
+            @PathVariable String licenseId) {
         String message = licenseService.deleteLicense(licenseId);
         return ResponseEntity.ok(message);
     }
 
-    @GetMapping
+    @GetMapping(value = "/organization/{organizationId}")
     public ResponseEntity<Organization> getOrganizationById(
             @PathVariable String organizationId
     ) {
