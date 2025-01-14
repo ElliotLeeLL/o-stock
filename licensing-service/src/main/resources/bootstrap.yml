@@ -6,3 +6,56 @@ spring:
   cloud:
     config:
       uri: http://configserver:8071
+
+logging:
+  level:
+    com.netflix: WARN
+    com.springframework.web: WARN
+    com.optimagrowth: WARN
+
+management:
+  endpoints:
+    enabled-by-default: false
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      licenseService:
+        register-health-indicator: true
+        ring-buffer-size-in-closed-state: 5
+        ring-buffer-size-in-half-open-state: 3
+        wait-duration-in-open-state: 10s
+        failure-rate-threshold: 50
+        record-exceptions:
+          - org.springframework.web.client.HttpServerErrorException
+          - java.io.IOException
+          - java.util.concurrent.TimeoutException
+          - org.springframework.web.client.ResourceAccessException
+  ratelimiter:
+    instances:
+      licenseService:
+        limit-for-period: 5
+        limit-refresh-period: 5000
+        timeout-duration: 1000ms
+  retry:
+    instances:
+      licenseService:
+        max-retry-attempts: 5
+        wait-duration: 10000
+        retry-exceptions:
+          - java.util.concurrent.TimeoutException
+  bulkhead:
+    instances:
+      licenseService:
+        max-wait-duration: 2ms
+        max-concurrent-calls: 20
+  thread-pool-bulkhead:
+    instances:
+      licenseService:
+        max-thread-pool-size: 1
+        core-thread-pool-size: 1
+        queue-capacity: 1
