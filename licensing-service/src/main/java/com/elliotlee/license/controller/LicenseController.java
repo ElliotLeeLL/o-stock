@@ -6,6 +6,9 @@ import com.elliotlee.license.service.LicenseService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.concurrent.TimeoutException;
+
 /**
  * @ClassName LicenseController
  * @Description Class created by Elliot Lee
@@ -55,6 +58,13 @@ public class LicenseController {
             @PathVariable String organizationId
     ) {
         return ResponseEntity.ok(licenseService.getOrganizationById(organizationId));
+    }
+
+    @GetMapping(value = "/resilience4j/organization/{organizationId}")
+    public ResponseEntity<List<License>> getByOrganizationId(
+            @PathVariable String organizationId
+    ) throws TimeoutException {
+        return ResponseEntity.ok(licenseService.getLicenseByOrganizationId(organizationId));
     }
 
 }
