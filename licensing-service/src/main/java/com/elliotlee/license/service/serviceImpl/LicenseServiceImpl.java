@@ -100,7 +100,7 @@ public class LicenseServiceImpl implements LicenseService {
         }
     }
 
-    private List<License> buildFallbackLicenseList(String organizationId) {
+    public List<License> buildFallbackLicenseList(String organizationId) {
         List<License> licenseList = new ArrayList<>();
         License license = new License();
         license.setLicenseId("0000000-00-00000");
