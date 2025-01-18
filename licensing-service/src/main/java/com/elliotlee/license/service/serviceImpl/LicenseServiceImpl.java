@@ -89,7 +89,7 @@ public class LicenseServiceImpl implements LicenseService {
         Random random = new Random();
         int randomInt = random.nextInt(4);
 
-        if(randomInt == 3) {
+        if(randomInt <= 2) {
             try {
                 System.out.println("Sleeping");
                 Thread.sleep(5000);
