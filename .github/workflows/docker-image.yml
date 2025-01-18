@@ -3,10 +3,10 @@ name: Build and Push Docker Images to GHCR
 on:
   push:
     branches:
-      - main  # Trigger on push to the main branch (adjust as needed)
+      - dev  # Trigger on push to the main branch (adjust as needed)
   pull_request:
     branches:
-      - main  # Trigger on PRs targeting the main branch (adjust as needed)
+      - dev  # Trigger on PRs targeting the main branch (adjust as needed)
 
 jobs:
   build-and-push:
