@@ -17,7 +17,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Step 2: Set up Docker Buildx (optional but recommended for multi-platform builds)
+      # Step 2: Set up Docker
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
@@ -41,16 +41,20 @@ jobs:
 
             # Check if the directory contains a Dockerfile
             if [ -f "$dir/Dockerfile" ]; then
-              echo "Found Dockerfile in $dir. Running Docker build..."
+              echo "Found Dockerfile in $dir. Building Docker image..."
 
-              # Build the Docker image
-              IMAGE_NAME="ghcr.io/${{ github.repository_owner }}/$(basename $dir):latest"
-              echo "Building Docker image for $dir as $IMAGE_NAME"
+              # Convert the repository owner and directory name to lowercase
+              OWNER=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
+              DIR_NAME=$(basename $dir | tr '[:upper:]' '[:lower:]')
 
-              # Run the Docker build command
+              # Create the full image name with lowercase OWNER and DIR_NAME
+              IMAGE_NAME="ghcr.io/$OWNER/$DIR_NAME:latest"
+              echo "Building image: $IMAGE_NAME"
+              
+              # Build Docker image
               docker build -t $IMAGE_NAME $dir
 
-              # Push the Docker image to GHCR
+              # Push the image to GitHub Container Registry
               docker push $IMAGE_NAME
             else
               echo "Skipping $dir (no Dockerfile found)"
