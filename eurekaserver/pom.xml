@@ -10,13 +10,13 @@
     </parent>
     <groupId>com.elliotlee</groupId>
     <artifactId>eurekaserver</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>latest</version>
     <name>Eureka Server</name>
     <description>Eureka Server</description>
 
     <properties>
         <java.version>11</java.version>
-        <docker.image.prefix>laymanlee</docker.image.prefix>
+        <docker.image.prefix>ElliotLeeLL</docker.image.prefix>
         <spring-cloud.version>Hoxton.SR1</spring-cloud.version>
     </properties>
 
