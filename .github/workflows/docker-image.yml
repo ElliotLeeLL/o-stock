@@ -60,9 +60,15 @@ jobs:
 
               # Tag the Docker image in GHCR format (ghcr.io/OWNER/IMAGE_NAME:latest)
               IMAGE_NAME="ghcr.io/${{ github.repository_owner }}/$(basename $dir):latest"
+              echo "IMAGE_NAME: $IMAGE_NAME"  # Output the target image name for debugging
 
               # Get the image ID (latest image created by the mvn command)
               IMAGE_ID=$(docker images -q $(basename $dir))
+              # Check if IMAGE_ID is not empty
+              if [ -z "$IMAGE_ID" ]; then
+                echo "Error: Image ID is empty, the Docker image may not have been built."
+                exit 1
+              fi
 
               # Tag the built image with the GHCR repository and tag
               docker tag $IMAGE_ID $IMAGE_NAME
