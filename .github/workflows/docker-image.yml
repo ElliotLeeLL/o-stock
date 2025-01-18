@@ -38,6 +38,7 @@ jobs:
         with:
           username: ${{ github.actor }}  # GitHub username
           password: ${{ secrets.GITHUB_TOKEN }}  # GitHub token (automatically provided)
+          registry: ghcr.io
 
       # Step 6: Build and push Docker images for each directory with a pom.xml
       - name: Build and Push Docker Images to GHCR
