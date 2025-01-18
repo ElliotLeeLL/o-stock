@@ -8,6 +8,11 @@ on:
     branches:
       - dev  # Trigger on PRs targeting the main branch (adjust as needed)
 
+permissions:
+  contents: read  # Required to checkout the code
+  packages: write  # Required to push Docker images to GHCR
+  actions: read  # Optional, required if you need to interact with actions API
+
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
