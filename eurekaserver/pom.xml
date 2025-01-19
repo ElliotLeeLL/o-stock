@@ -18,10 +18,13 @@
         <java.version>11</java.version>
         <docker.image.prefix>ElliotLeeLL</docker.image.prefix>
         <spring-cloud.version>Hoxton.SR1</spring-cloud.version>
-        <maven.test.skip>true</maven.test.skip>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>

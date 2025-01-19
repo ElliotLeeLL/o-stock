@@ -1,5 +1,5 @@
 # Step 1: Use a base image with Maven installed to build the JAR
-FROM maven:3.8.4-openjdk-17-slim AS build
+FROM maven:3.8.4-openjdk-11-slim AS build
 
 # Set the working directory inside the container
 WORKDIR /app
@@ -11,7 +11,7 @@ COPY . /app
 RUN mvn clean package
 
 # Step 4: Use OpenJDK image to run the JAR file
-FROM openjdk:17-jdk-slim
+FROM openjdk:11-jdk-slim
 
 # Set the working directory in the container
 WORKDIR /app
