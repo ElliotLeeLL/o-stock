@@ -20,7 +20,7 @@ services:
       timeout: 5s
       retries: 5
   configserver:
-    image: laymanlee/configserver:0.0.1-SNAPSHOT
+    image: ghcr.io/elliotleell/configserver:latest
     ports:
       - "8071:8071"
     environment:
@@ -30,7 +30,7 @@ services:
         aliases:
           - "configserver"
   eurekaserver:
-    image: laymanlee/eurekaserver:0.0.1-SNAPSHOT
+    image: ghcr.io/elliotleell/eurekaserver:latest
     ports:
       - "8070:8070"
     environment:
@@ -45,7 +45,7 @@ services:
         aliases:
           - "eurekaserver"
   licensingservice:
-    image: laymanlee/licensing-service:0.0.1-SNAPSHOT
+    image: ghcr.io/elliotleell/licensing-service:latest
     ports:
       - "8080:8080"
     environment:
@@ -63,7 +63,7 @@ services:
     networks:
       - backend
   organizationservice:
-    image: laymanlee/organization-service:0.0.1-SNAPSHOT
+    image: ghcr.io/elliotleell/organization-service:latest
     ports:
       - "8081:8081"
     environment:
