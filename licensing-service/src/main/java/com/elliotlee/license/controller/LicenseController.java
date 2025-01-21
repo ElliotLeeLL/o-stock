@@ -3,6 +3,8 @@ package com.elliotlee.license.controller;
 import com.elliotlee.license.model.License;
 import com.elliotlee.license.model.Organization;
 import com.elliotlee.license.service.LicenseService;
+import com.elliotlee.license.utils.UserContextHolder;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +18,7 @@ import java.util.concurrent.TimeoutException;
  * @Date 2024-10-23 8:45 PM
  */
 
+@Slf4j
 @RestController
 @RequestMapping(value = "v1/license")
 public class LicenseController {
@@ -27,6 +30,7 @@ public class LicenseController {
     @GetMapping(value = "/{licenseId}")
     public ResponseEntity<License> getLicense(@PathVariable String licenseId) {
         License license = licenseService.getLicense(licenseId);
+        log.info("LicenseServiceController Correlation id: {}", UserContextHolder.getUserContext().getCorrelationId());
         return ResponseEntity.ok(license);
     }
 
